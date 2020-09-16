@@ -14,7 +14,8 @@ int main() {
 	int n;
 	cout << "Press n value: ";
 	cin >> n;
-	cout << "Classical complex value: (a + b * i) = " << a << " + " << b << " * i" << endl;
+	cout << "Classical complex value: (r)   (a + b * i) = " << a << " + " << b << " * i" << endl;
+	cout << "Reversed complex value: (r^-1) (a - b * i) / (a^2 + b^2) = " << a / pow(module_value(a, b), 2)<< " + " << b / pow(module_value(a, b), 2) << " * i" << endl;
 	double fi_corner = a > 0 && b > 0 ? acos(a / module_value(a, b)) * 180 / M_PI :
 		a > 0 && b < 0 ? -acos(a / module_value(a, b)) * 180 / M_PI :
 		a < 0 && b > 0 ? 180 - acos(-a / module_value(a, b)) * 180 / M_PI :
