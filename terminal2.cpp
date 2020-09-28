@@ -13,12 +13,7 @@ public:
 	}
 	string is_collinear(const Vector& a) {
 		double n1, n2, n3;
-		n1 = a.x != 0 ? n1 = (double)x / a.x : n1 = 0.0;
-		n2 = a.y != 0 ? n2 = (double)y / a.y : n2 = 0.0;
-		n3 = a.z != 0 ? n3 = (double)z / a.z : n3 = 0.0;
-		return (n1 == n2 || (n1 == 0 && a.x == 0) || (n2 == 0 && a.y == 0)) &&
-			(n2 == n3 || (n3 == 0 && a.z == 0) || (n2 == 0 && a.y == 0))
-			&& (n1 == n3 || (n1 == 0 && a.x == 0) || (n3 == 0 && a.z == 0))
+		return (y * a.z - z * a.y) - (x * a.z - z * a.x) + (x * a.y - y * a.x) == 0
 			? "is collinear" : "is not collinear";
 	}
 public:
