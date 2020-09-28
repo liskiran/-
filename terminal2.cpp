@@ -3,7 +3,6 @@
 #include <string>
 #include <vector>
 #define NAME_VARIABLE(var_) #var_
-int vectors[3][3];
 using namespace std;
 int c = 1;
 class Vector {
