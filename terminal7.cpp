@@ -125,7 +125,7 @@ void find_fundamental_solution(double a[40][40], int n, int m) {
 			for (int m = 0; m < n; m++) {
 				printf("%lf ", ix[m]);
 			}
-			break;
+			printf("\n");
 		}
 	}
 }
