@@ -117,7 +117,7 @@ void find_fundamental_solution(double a[40][40], int n, int m) {
 							ix[l] += ix[h] * a[j][h] * (-1);
 						}
 						ix[l] = ix[l] / a[j][l];
-						//f = 1;
+						f = 1;
 						break;
 					}
 				}
