@@ -1,14 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
-void print(double a[40][40], int m, int n) {
-	for (int i = 0; i < m; i++) {
-		for (int j = 0; j < n; j++)
-			printf("  %0.2f", a[i][j]);
-		printf("\n");
-	}
-}
-
 void gauss_method(double a[40][40], int m, int n) {
 	int flag = 0;
 	double x = 0, r = 0;
