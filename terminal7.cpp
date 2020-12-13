@@ -105,6 +105,7 @@ void find_fundamental_solution(double a[40][40], int n, int m) {
 		}
 		return;
 	}
+	int f = 0;
 	for (int i = 0; i < n; i++) {
 		if (b[i] == 0) {
 			ix[i] = 1;
@@ -116,8 +117,12 @@ void find_fundamental_solution(double a[40][40], int n, int m) {
 							ix[l] += ix[h] * a[j][h] * (-1);
 						}
 						ix[l] = ix[l] / a[j][l];
+						//f = 1;
 						break;
 					}
+				}
+				if (f-- == 1) {
+					break;
 				}
 			}
 			printf("%d) ", in);
