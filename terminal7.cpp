@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-
+#include<math.h>
 void gauss_method(double a[40][40], int m, int n) {
 	int flag = 0;
 	double x = 0, r = 0;
@@ -10,8 +10,8 @@ void gauss_method(double a[40][40], int m, int n) {
 			if ((a[j][i] != 0.0) && (j != i)) {
 				for (int m = 0; m < n; m++) {
 					// меняем строки
-					r = a[j][m]; 
-					a[j][m] = a[i][m]; 
+					r = a[j][m];
+					a[j][m] = a[i][m];
 					a[i][m] = r;
 				}
 				break;
@@ -23,29 +23,29 @@ void gauss_method(double a[40][40], int m, int n) {
 	int m1;
 	if (m > n)
 		m1 = n;
-	else 
+	else
 		m1 = m;
 	// гаусс вниз и вверх для прямоугольных и квадратных матриц
-		for (int i = 0; i < m1; i++) {
-			if (a[i][i] != 0.0) {
-				for (int j = i + 1; j < m1; j++) {
-					x = a[j][i] / a[i][i];
-					for (int l = 0; l < n; l++) {
-						a[j][l] = a[j][l] - x * a[i][l];
-					}
+	for (int i = 0; i < m1; i++) {
+		if (a[i][i] != 0.0) {
+			for (int j = i + 1; j < m1; j++) {
+				x = a[j][i] / a[i][i];
+				for (int l = 0; l < n; l++) {
+					a[j][l] = a[j][l] - x * a[i][l];
 				}
 			}
 		}
-		for (int i = m1 - 1; i > 0; i--) {
-			if (a[i][i] != 0.0) {
-				for (int j = i - 1; j >= 0; j--) {
-					x = a[j][i] / a[i][i];
-					for (int l = 0; l < n; l++) {
-						a[j][l] = a[j][l] - x * a[i][l];
-					}
+	}
+	for (int i = m1 - 1; i > 0; i--) {
+		if (a[i][i] != 0.0) {
+			for (int j = i - 1; j >= 0; j--) {
+				x = a[j][i] / a[i][i];
+				for (int l = 0; l < n; l++) {
+					a[j][l] = a[j][l] - x * a[i][l];
 				}
 			}
 		}
+	}
 
 	int kol = 0;
 	// строки равные нулю отправляем вниз матрицы
@@ -105,8 +105,9 @@ void find_fundamental_solution(double a[40][40], int n, int m) {
 		}
 		return;
 	}
-	int f = 0;
-	for (int i = 0; i < n; i++) {
+	int t = n;
+	if (abs(n - m) > 1) t = n - 1;
+	for (int i = 0; i < t; i++) {
 		if (b[i] == 0) {
 			ix[i] = 1;
 			for (int j = niz; j >= 0; j--) {
@@ -117,12 +118,8 @@ void find_fundamental_solution(double a[40][40], int n, int m) {
 							ix[l] += ix[h] * a[j][h] * (-1);
 						}
 						ix[l] = ix[l] / a[j][l];
-						f = 1;
 						break;
 					}
-				}
-				if (f-- == 1) {
-					break;
 				}
 			}
 			printf("%d) ", in);
@@ -147,6 +144,6 @@ int main() {
 		}
 	}
 	find_fundamental_solution(a, m, n);
-	
+
 	return 0;
 }
