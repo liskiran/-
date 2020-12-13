@@ -96,7 +96,7 @@ void find_fundamental_solution(double a[40][40], int n, int m) {
 		}
 	}
 	int in = 1;
-	printf("Fundamental system of solutions\n\n");
+	printf("Fundamental system of solution\n\n");
 	// если сумма равно n, то тогда нулевой столбец единственное решение
 	if (sum == n) {
 		printf("1) ");
@@ -111,13 +111,13 @@ void find_fundamental_solution(double a[40][40], int n, int m) {
 			for (int j = niz; j >= 0; j--) {
 				for (int l = 0; l < n; l++) {
 					if (a[j][l] != 0.0) {
-						// тут находим базисные корни 
+						// тут находим базисный корень 
 						for (int h = l + 1; h < n; h++) {
 							ix[l] += ix[h] * a[j][h] * (-1);
 						}
 						ix[l] = ix[l] / a[j][l];
+						break;
 					}
-					if (a[j][l] != 0.0) break;
 				}
 			}
 			printf("%d) ", in);
@@ -125,8 +125,7 @@ void find_fundamental_solution(double a[40][40], int n, int m) {
 			for (int m = 0; m < n; m++) {
 				printf("%lf ", ix[m]);
 			}
-			printf("\n");
-			for (int q = 0; q < n; q++) ix[q] = 0;
+			break;
 		}
 	}
 }
